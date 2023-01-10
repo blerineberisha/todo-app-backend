@@ -1,6 +1,8 @@
 package m426.todoapp.todoappbe.task;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import m426.todoapp.todoappbe.state.StateType;
@@ -15,7 +17,7 @@ import m426.todoapp.todoappbe.todo.TodoList;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "task_id", nullable = false)
+    @Column(name = "task_id")
     int taskId;
     @Column(name = "name", length = 20)
     String name;
@@ -24,6 +26,7 @@ public class Task {
     @Enumerated(EnumType.STRING)
     StateType state;
     @ManyToOne(optional = false, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonIgnore
     @JoinColumn(name = "id_todo_list", referencedColumnName = "todo_list_id", nullable = false)
     TodoList todoList;
 }
