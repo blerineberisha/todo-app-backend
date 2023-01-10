@@ -4,6 +4,7 @@ import javax.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import m426.todoapp.todoappbe.authority.Authority;
+
 import java.util.HashSet;
 import java.util.Set;
 

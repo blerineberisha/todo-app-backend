@@ -1,5 +1,6 @@
 package m426.todoapp.todoappbe.users;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -28,6 +29,7 @@ public class Users {
     String lastName;
     @ManyToOne(optional = false, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "id_role", nullable = false, referencedColumnName = "role_id")
+    @JsonBackReference
     Role role;
 }
 
